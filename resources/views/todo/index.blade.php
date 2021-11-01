@@ -32,10 +32,13 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
+                            @php
+                                $no = 1;
+                            @endphp
                             @forelse ($todos as $todo)
                             <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm font-medium text-gray-900">{{ $todo->id }}</div>
+                                <div class="text-sm font-medium text-gray-900">{{ $no++ }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{ $todo->todo }}</div>
