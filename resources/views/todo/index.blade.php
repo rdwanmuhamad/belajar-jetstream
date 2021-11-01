@@ -19,6 +19,24 @@
                     <th class="border px-4 py-2 width:70%">Todo</th>
                     <th class="border px-4 py-2 width:20%">Aksi</th>
                 </tr>
+            @forelse ($todos as $todo)
+                <tr>
+                    <td class="border px-4 py-2 width:10%">{{ $todo->id }}</td>
+                    <td class="border px-4 py-2 width:70%">{{ $todo->todo }}</td>
+                    <td class="border px-4 py-2 width:20%">
+                        <a href="{{ route('todo.edit', $todo->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                        <form action="{{ route('todo.destroy', $todo->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('delete')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3" class="border px-4 py-2 text-center">Tidak Ada Data</td>    
+                </tr>    
+            @endforelse
             </table>
         </div>
     </div>
